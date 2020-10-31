@@ -1,6 +1,7 @@
 ![](/assets/img/rdme-coinbat.jpg)
 
-# **Mortal Coinbat**
+# **MemoWords**
+
 
 ## **Description**
 
@@ -26,6 +27,7 @@ MemoWords was developed using JavaScript as part of the Ironhack developer bootc
 
 ## **Backlog**
 
+
 **ResultsPage:** A customizable "Results" message with your times
 **MemoryGamePage:** Presented for 2 players.
 
@@ -33,35 +35,59 @@ MemoWords was developed using JavaScript as part of the Ironhack developer bootc
 
 ## **Wireframes**
 
+
 ![](/assets/img/wireframes-coinbat.jpg)
+
+
 
 ## **Data structure**
 
-root/
+
+__root/
+
 index.htm
+
 memowords.html
+
 login.html
+
 signup.html
 
-styles/
+
+__styles/
+
 styleReset.css
+
 style.css
 
-sripts/
+
+__sripts/
+
 Database.js
+
 Loing.js
+
 Signup.js
+
 User.js
+
 Validator.js
+
 Word.js
+
 wordsAPI.js
+
 wordsmemory.js
 
-assets/
+
+__assets/
+
 img/
 
 
+
 ## **APIs**
+
 
 https://www.wordsapi.com/
 
@@ -71,18 +97,14 @@ https://rapidapi.com/dpventures/api/wordsapi/
 
 ## **Links**
 
-### Trello 
 
+#### Trello 
 https://trello.com/b/1Hr64RBj/memowords
 
 
-
-### **Github**
-
+#### **Github**
 https://github.com/clayrisse/memowords
 
 
-
-### **Slides**
-
+#### **Slides**
 URls for the project presentation (slides) Link Slides.com
