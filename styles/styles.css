@@ -9,5 +9,13 @@ body {
 
 p {
     background-color: aquamarine;
-    margin: 15px;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+
+}
+
+#board {
+   display: flex;
+   flex-wrap: wrap; 
 }

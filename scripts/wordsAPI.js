@@ -8,7 +8,7 @@ let boardSize = 0
 
 // console.log("values-->",levelChoise, boardSizeImput)
 
-const testSection = document.querySelector("#test");
+const boardSection = document.querySelector("#board");
 getRandomIndex = (arr) => Math.floor(Math.random()*arr.length)
 
 function getArraysSetUp() { // 
@@ -34,7 +34,7 @@ function getBoardStarted() { // Loop to list tag elem to asign later by data-key
         divTest.setAttribute("class", `wordbox`)
         // divTest.innerHTML = `<p class="wordtest" data-key="w${i-1}">hello${i-1}</p>`
         // <p id="wordtest" data-key="${i*2-1}">hello${i*2-1}</p>`;
-        testSection.appendChild(divTest)
+        boardSection.appendChild(divTest)
     }
 }
 
@@ -43,16 +43,16 @@ function audioTesting(){ //test to see if addlistener are active
 }
 
 function printShuffleOrderTesting() { //NOT TO USE. 
+
     for (let i = 1; i <= boardSize/2; i++){
         const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
         const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
-        
         const word = document.createElement('p');
         const definition = document.createElement('p');
         
-        word.setAttribute("data-key", `${(i*2)-2}`)
+        word.setAttribute("data-word", `${(i*2)-2}`)
         word.setAttribute("class", `textword`)
-        definition.setAttribute("data-key", `${(i*2)-1}`)
+        definition.setAttribute("data-def", `${(i*2)-1}`)
         definition.setAttribute("class", `textdefinition`)
         
         word.textContent = `pipi${(i*2)-2}`;
@@ -60,13 +60,20 @@ function printShuffleOrderTesting() { //NOT TO USE.
         
         keyWord.appendChild(word) 
         keyDefi.appendChild(definition) 
+        console.log(keyWord, keyDefi)
         
+        keyWord.addEventListener('click', audioTesting)
+        keyDefi.addEventListener('click', audioTesting)
     }
+
 }
 // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
 
 function getWordFromApi() {    
     // console.log(levelChoise)
+    // console.log(boardSection)    //---------------why does not work ???????????????
+    // boardSection.innerHTML = ""
+
     let wordListRaw = levelChoise.split("\n")    
     let wordListClean = wordListRaw.map(x=>x.split(" ")[0])
     // console.log(wordListClean)
@@ -95,9 +102,9 @@ function getWordFromApi() {
             const word = document.createElement('p');
             const definition = document.createElement('p');
             
-            word.setAttribute("data-key", `${(i*2)-2}`)
+            word.setAttribute("data-word", `${(i*2)-2}`)
             word.setAttribute("class", `textword`)
-            definition.setAttribute("data-key", `${(i*2)-1}`)
+            definition.setAttribute("data-def", `${(i*2)-1}`)
             definition.setAttribute("class", `textdefinition`)
             
             word.textContent = `word: ${data.word}`;
@@ -136,18 +143,22 @@ function setSetings() {
     // console.log(typeof levelChoiseImput)
     // console.log("values------>",boardSize,)
     // console.log("values------>", levelChoise)
-    
+
     getArraysSetUp();   // console.log("cardArr:", cardArr, "numberOrder:",numberOrder);
     shuffle();          // console.log("shuffleOrder:",shuffleOrder)
-    getBoardStarted();  // console.log(testSection)
+    getBoardStarted();  // console.log(boardSection)
 
-    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
+    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+
+    setSettingBtn.removeEventListener('click', setSetings)
 } 
 
+const setSettingBtn = document.querySelector('#btnseting')
 window.addEventListener('load', () => {
-    const setSettingBtn = document.querySelector('#btnseting')
+    
     // console.log("creaaaaaaaaaaaaaate", setSettingBtn)
-    setSettingBtn.addEventListener('click', setSetings )
+    setSettingBtn.addEventListener('click', setSetings)
 
 })
     
