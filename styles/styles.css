@@ -6,3 +6,8 @@ body {
     margin: 50px ;
     line-height: 35px;
 }
+
+p {
+    background-color: aquamarine;
+    margin: 15px;
+}

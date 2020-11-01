@@ -1,4 +1,5 @@
-const wA1 = `a , an indefinite article
+const level = {
+    wA1: `a , an indefinite article
 about prep., adv.
 above prep., adv.
 across prep., adv.
@@ -899,9 +900,9 @@ yesterday adv., n.
 you pron.
 young adj.
 your det.
-yourself pron.`
+yourself pron.`,
 
-const wA2 = `ability n.
+    wA2: `ability n.
 able adj.
 abroad adv.
 accept v.
@@ -1778,9 +1779,9 @@ worst adj.
 wow exclam.
 yet adv.
 yours pron.
-zero number`
+zero number`,
 
-const wB1 = `absolutely adv.
+    wB1: `absolutely adv.
 academic adj.
 access n., v.
 accommodation n.
@@ -2595,9 +2596,9 @@ written adj.
 wrong adv.
 yard n.
 young n.
-youth n`
+youth n`,
 
-const wB2 = `absorb v.
+    wB2: `absorb v.
 abstract adj.
 accent n.
 accidentally adv.
@@ -3296,9 +3297,9 @@ workforce n.
 workplace n.
 workshop n.
 worm n.
-wrist n.`
+wrist n.`,
 
-const wC1 = `abandon v.
+    wC1: `abandon v.
 absolute adj.
 academic n.
 acceptable adj.
@@ -4029,9 +4030,9 @@ wound n., v.
 wrap v.
 wrong n.
 yet conj.
-zone n.`
+zone n.`,
 
-const wC2 = `abolish v.
+    wC2: `abolish v.
 abortion n.
 absence n.
 absent adj.
@@ -5346,9 +5347,9 @@ worthwhile adj.
 worthy adj.
 yell v.
 yield n., v.
-youngster n.`
+youngster n.`,
 
-const wD1 = `abject
+    wD1: `abject
 aberration
 abjure
 abnegation
@@ -5655,5 +5656,5 @@ yoke
 zephyr
 wily
 tirade`
-
+}
 
