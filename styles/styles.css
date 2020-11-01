@@ -3,15 +3,15 @@
 
 body {
     font-size: 20px; 
-    margin: 50px ;
+    margin: 50px ; 
     line-height: 35px;
 }
 
 p {
     background-color: aquamarine;
     margin: 10px;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 
 }
 
