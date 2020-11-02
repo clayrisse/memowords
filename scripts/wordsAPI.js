@@ -3,7 +3,7 @@ let fillOrder = []
 let numberOrder = []
 let shuffleOrder = []
 let cardArr = []
-let levelChoise = ""
+let levelChoise = "" 
 let boardSize = 0
 
 // console.log("values-->",levelChoise, boardSizeImput)
