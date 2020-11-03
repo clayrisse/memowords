@@ -134,6 +134,7 @@ function getWordFromApi() {
 
                 const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
                 keyWord.setAttribute("data-pair", `${i}`)
+                keyWord.classList.add('word')
                 const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
                 keyDefi.setAttribute("data-pair", `${i}`)
 
@@ -145,8 +146,8 @@ function getWordFromApi() {
                 definition.setAttribute("data-def", `${(i*2)-1}`)
                 definition.setAttribute("class", `frontside`)
                 
-                word.textContent = `word: ${wordInfo[i-1].word}`;
-                definition.textContent = `definition: ${wordInfo[i-1].results[randomePick].definition}`;
+                word.textContent = `${wordInfo[i-1].word}`;
+                definition.textContent = `${wordInfo[i-1].results[randomePick].definition}`;
                 
                 keyWord.appendChild(word) 
                 keyDefi.appendChild(definition)         
@@ -173,8 +174,8 @@ function setSetings() {
 
     makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
-    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
+    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 
 } 
 
