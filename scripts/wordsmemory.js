@@ -3,12 +3,21 @@ let pick1
 let pick2
 let flipCardStatus = false
 function flipCard() {
-    //ADD CLASS "PICKED" TO this. CARD
-    //  this.classList.add('picked')
+    console.log("memowords--", memoWords)
+    //ADD CLASS "PICKED" TO this. CARD witch is what ever clicks it listens
+    this.classList.add('picked');
     
     //CHECK if IT HAS BEEN FLIPED 
         //IF NOT, CHANGE FLIPSTATUS AND ASIGN PICK1 AND GET OUT OF FUNCTION
-        //ELSE TURN BACK FLIPSTATUS AND ASIGN PICK2 AND RUN FUNCTION TOCHECK IF IT MATCHES
+        if (flipCardStatus === false){
+            pick1 = this;
+            flipCardStatus = true;
+        }
+        //ELSE TURN BACK FLIPSTATUS AND ASIGN PICK2 AND RUN FUNCTION TO CHECK IF IT MATCHES
+        pick2 = this;
+        flipCardStatus = false;
+
+        checkPair()
 }
 
 // let superS = document.querySelector('.supersuper') 
@@ -21,15 +30,19 @@ function resetPick() {
 }
 
 function checkPair() {
-  
+  console.log("hello")
     //CHECK IF .dataset.  PAIR(data-pair) match
+    if (pick1.dataset.pair===pick2.dataset.pair){ //IF PAIRED P1=P2? DISABLE PICKED : TURNOROUND CARDS
+        //IF THEY DO, REMOVE EVENT LISTENERS AND RETURN 
+        pick1.removeEventListener('click', flipCard)
+        pick2.removeEventListener('click', flipCard)
+        return
 
-      //IF PAIRED P1=P2? DISABLE PICKED : TURNOROUND CARDS
-
-    if (pick1===pick2) { //check if 
-        //leave open
-        //remove event listener
-    }    //IF THEY DO, REMOVE EVENT LISTENERS AND RETURN 
+    }
+    let ee = pick1.setAttribute("class", "memocard");
+    console.log(ee)
+    pick2.setAttribute("class", "memocard");
+      
   
     
     //ELSE TURN CARDS BACK AGAIN unflip  AND REMOVE "PICKED"CLASS WITH SOME TIMEOUT
@@ -38,8 +51,8 @@ function checkPair() {
 
     //turn around card
     setTimeout(() => {
-        pick1//remove flip class side
-        pick//remove flip class side
+        //pick1//remove flip class side
+        //pick//remove flip class side
     }, 1000);
 }
 

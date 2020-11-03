@@ -43,15 +43,17 @@ function shuffle() { //makes an array of the shuffle or to later sellect by inde
 }
 
 function getBoardStarted() { // Loop to list tag elem to asign later by data-key in shuffleOrder
-    for (let i = 1; i<=boardSize; i++) {
-        const divTest = document.createElement('div');
-        divTest.setAttribute("data-key", `${i-1}`)
-        divTest.setAttribute("class", `wordbox`)
+    for (let i = 1; i<=boardSize/2; i++) {
+        const divWord = document.createElement('div');
+        const divDefi = document.createElement('div');
+        divWord.setAttribute("data-key", (i*2)-1)
+        divWord.setAttribute("class", `memocard`)
+        divDefi.setAttribute("data-key", (i*2)-2)
+        divDefi.setAttribute("class", `memocard`)
  
-        boardSection.appendChild(divTest)
+        boardSection.appendChild(divWord)
+        boardSection.appendChild(divDefi)
 
-        // MAKE SECOND SECTION TO ADD THE OTHER SIDE OF THE CARD 
-        // ADD CLASS   FOR FRONT AND BACK OF CARDS
     }
 }
 
@@ -63,27 +65,25 @@ function printShuffleOrderTesting() { //NOT TO USE.
 
     for (let i = 1; i <= boardSize/2; i++){
         const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
+        keyWord.setAttribute("data-pair", `${i}`)
         const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
+        keyDefi.setAttribute("data-pair", `${i}`)
         const word = document.createElement('p');
         const definition = document.createElement('p');
         
         word.setAttribute("data-word", `${(i*2)-2}`)
-        word.setAttribute("class", `textword id${i}`)
-        // word.setAttribute("value", `${i}`)
+        word.setAttribute("class", `frontside`)
         definition.setAttribute("data-def", `${(i*2)-1}`)
-        definition.setAttribute("class", `textdefinition`)
-        // definition.setAttribute("value", `${i}`)
+        definition.setAttribute("class", `frontside`)
         
         word.textContent = `pipi${(i*2)-2}`;
         definition.textContent = `pipi${(i*2)-1}`;
         
         keyWord.appendChild(word) 
         keyDefi.appendChild(definition) 
-        console.log(keyWord, keyDefi)
-        // console.log(word.data-word)
 
-        keyWord.addEventListener('click', audioTesting)
-        keyDefi.addEventListener('click', audioTesting)
+        keyWord.addEventListener('click', flipCard)
+        keyDefi.addEventListener('click', flipCard)
     }
 }
 // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
@@ -117,7 +117,7 @@ function getWordFromApi() {
         return responses;
     }) // map array of responses into an array of response.json() to read their content
     .then(responses => Promise.all(responses.map(res => {
-        console.log(res)
+        // console.log(res)
         return res.json()
     }))) // all JSON answers are parsed: "users" is the array of them
     .then(wordInfo => {
@@ -126,23 +126,24 @@ function getWordFromApi() {
         memoWords.push(wordObj)
         return memoWords
         })
-        // return alert(word.name)
 
-        let randomePick = 0
-        //getRandomIndex(wordInfo.results);
-            
-            //-------selection creation and appendind of elements or words and definition
-            for (let i = 1; i <= boardSize/2; i++){
+        //-------selection creation and appendind of elements or words and definition
+        for (let i = 1; i <= boardSize/2; i++){
+            let randomePick = getRandomIndex(wordInfo[i-1].results)
+            // console.log("wordInfo", wordInfo)
+
                 const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
+                keyWord.setAttribute("data-pair", `${i}`)
                 const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
-                
+                keyDefi.setAttribute("data-pair", `${i}`)
+
                 const word = document.createElement('p');
                 const definition = document.createElement('p');
                 
                 word.setAttribute("data-word", `${(i*2)-2}`)
-                word.setAttribute("class", `textword`)
+                word.setAttribute("class", `frontside`)
                 definition.setAttribute("data-def", `${(i*2)-1}`)
-                definition.setAttribute("class", `textdefinition`)
+                definition.setAttribute("class", `frontside`)
                 
                 word.textContent = `word: ${wordInfo[i-1].word}`;
                 definition.textContent = `definition: ${wordInfo[i-1].results[randomePick].definition}`;
@@ -150,19 +151,14 @@ function getWordFromApi() {
                 keyWord.appendChild(word) 
                 keyDefi.appendChild(definition)         
                 
-                keyWord.addEventListener('click', audioTesting)
-                // keyDefi.addEventListener('click', () => {
-                //     audioTesting();
-                //     // flipCard();
-                //     checkPair(i);
-                // })
-            
+                keyWord.addEventListener('click', flipCard)
+                keyDefi.addEventListener('click', flipCard)
+
             }
+            // console.log("wordInfo---", wordInfo)
+            console.log("memowords--", memoWords)
     })
-    .then(arr=>{
-        console.log("arr--------", arr)
-        console.log("memowords--", memoWords[0])
-    })
+   
     .catch(err => {
         console.log(err);
     }); 
@@ -170,14 +166,12 @@ function getWordFromApi() {
 };
 
 
-
 function setSetings() {
     getArraysSetUp();   // console.log("cardArr:", cardArr, "numberOrder:",numberOrder);
     shuffle();          // console.log("shuffleOrder:",shuffleOrder)
     getBoardStarted();  // console.log(boardSection)
 
-    makeArrOfWordsToFetch(levelChoise)
-    console.log("wordsArr", wordsArr)
+    makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
     printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
     // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
