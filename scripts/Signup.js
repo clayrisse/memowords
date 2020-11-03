@@ -1,122 +1,145 @@
-"use strict"; //literally from Uros
+'use strict';
 
 class Signup {
-  constructor() {
-    // store all of the input elements
+  constructor () {
     this.nameInput = document.querySelector("#name");
-    this.pokemonInput = document.querySelector("#pokemon");
-    this.typeInput = document.querySelector("#type");
     this.emailInput = document.querySelector("#email");
     this.passwordInput = document.querySelector("#password");
     this.repeatPasswordInput = document.querySelector("#repeat-password");
-
+   
     this.buttonInput = document.querySelector("#signup-button");
     this.errorsWrapper = document.querySelector(".message-container");
   }
 
-  // handle the email input
+
+  //mang changes of input 'email'
   handleEmailInput = (event) => {
-    const emailInput = event.target;
-    const email = emailInput.value;
+    const email = event.target.value;
 
+    //remember:validate input email text
     validator.validateValidEmail(email);
-    validator.validateUniqueEmail(email);
 
+    const errors = validator.getErrors();
+
+    //if name of email is valid
+    if (!errors.invalidEmailError) {
+      //check if email is unique
+      validator.validateUniqueEmail(email);
+    }
     this.setErrorMessages();
-  };
+  }
 
 
-
-  // handle the password input
+  //mang changes of input  'password'
   handlePasswordInput = (event) => {
-    const passwordInput = event.target;
-    const repeatPasswordInput = this.repeatPasswordInput;
+    const password = event.target.value;
+    const passwordRepeat = this.repeatPasswordInput.value;
 
-    const password = passwordInput.value;
-    const repeatPassword = repeatPasswordInput.value;
-
+    //remember: validate input password text
     validator.validatePassword(password);
-    validator.validateRepeatPassword(password, repeatPassword);
+    validator.validatePasswordRepeat(password, passwordRepeat);
 
     this.setErrorMessages();
-  };
+  }
 
 
-  // handle the repeat-password input
-  // password confirmation
+  //manage changes of input  'repeat-password'
   handleRepeatPasswordInput = (event) => {
-    const passwordInput = event.target;
-    const repeatPasswordInput = this.repeatPasswordInput;
+    const passwordRepeat = event.target.value;
+    const password = this.passwordInput.value;
 
-    const password = passwordInput.value;
-    const repeatPassword = repeatPasswordInput.value;
-
+    //remember:validate input Password tex
+    //remember:validate input repeatPassword text
     validator.validatePassword(password);
-    validator.validateRepeatPassword(password, repeatPassword);
+    validator.validatePasswordRepeat(password, passwordRepeat);
 
     this.setErrorMessages();
-  };
+  }
 
 
-  // used to show messages below the Signup form
-  setErrorMessages = () => {
+  //manage data sending 'submit'
+  saveData = (event) => {
+    //we do this to prevent the linked to "a database" cause we dont have one for this project
+    // we cancel it so it doen no load
+    event.preventDefault();
+    //takes the value of each input
+    const name = this.nameInput.value;
+    const email = this.emailInput.value;
+    const password = this.passwordInput.value;
+    const repeatPassword = this.repeatPasswordInput.value;
 
-    // Clear previous messages, so that they don't add up
+    const newUser = new User(name,  email, password);
+
+     //save new user in our "database" (cause our database will be simulated;)
+    db.saveNewUser( newUser );
+
+    //empty the form
+    this.nameInput.value = "";
+    this.emailInput.value = "";
+    this.passwordInput.value = "";
+    this.repeatPasswordInput.value = "";
+
+    this.showSuccessMessage();
+    this.removeMessages();
+  }
+
+ 
+  showSuccessMessage = () => {
+    // show errors so they dont add up
     this.errorsWrapper.innerHTML = "";
 
     const errorsObj = validator.getErrors();
+    // convert  object in an array of strings
+    const errorsStringsArr = Object.values(errorsObj);
 
+    if (errorsStringsArr.length > 1) {
+      return;
+    }
+
+    const successMessageP = document.createElement('p');
+    successMessageP.innerHTML = "La cuenta ha sido creada con exito";
+
+    this.errorsWrapper.appendChild(successMessageP);
+  }
+
+
+  removeMessages = () => {
+    setTimeout( () => {
+      this.errorsWrapper.innerHTML = "";
+    }, 2000)
+  }
+
+
+  setErrorMessages = () => {
+    //empties all errors so they dont add
+    this.errorsWrapper.innerHTML = "";
     
-    // returns an array of objects values (only error strings)
-    const errorStringsArr = Object.values( errorsObj );
+    const errorsObj = validator.getErrors();
 
-    errorStringsArr.forEach( (str) => {
-      const p = document.createElement('p');
-      p.textContent = str;
+    //conver object to array of strings
+    const errorsStringsArr = Object.values(errorsObj);
 
-      this.errorsWrapper.appendChild(p);
+    errorsStringsArr.forEach( (errorStr) => {
+      const errorMessageP = document.createElement('p');
+      errorMessageP.innerHTML = errorStr;
+
+      this.errorsWrapper.appendChild(errorMessageP);
     })
   }
 
 
-  // handle the sending of the data ( on submit )
-  saveData = (event) => {
-    // Prevent the default behaviour of the form submit button
-    // which reloads the page
-
-    event.preventDefault();
-
-    // get the value from all of the inputs
-    const name = this.nameInput.value;
-    const pokemon = this.pokemonInput.value;
-    const type = this.typeInput.value;
-    const email = this.emailInput.value;
-    const password = this.passwordInput.value;
-
-    // create the new user
-    const newUser = new User(name, pokemon, type, email, password);
-
-    // Save the user in the database
-    db.saveNewUser(newUser);
-
-    // empty the form
-    this.nameInput.value = "";
-    this.pokemonInput.value = "";
-    this.typeInput.value = "";
-    this.emailInput.value = "";
-    this.passwordInput.value = "";
-  };
-
-  addListeners = () => {
-    this.emailInput.addEventListener("input", this.handleEmailInput);
+   //register functions for each input/field
+   addListeners = () => {
+    //listens to text changes when we type
+    this.emailInput.addEventListener("input", this.handleEmailInput );
     this.passwordInput.addEventListener("input", this.handlePasswordInput);
     this.repeatPasswordInput.addEventListener("input", this.handleRepeatPasswordInput);
     this.buttonInput.addEventListener("click", this.saveData);
   }
 }
 
+
+//create a new instance for the Signup (object)
 const signup = new Signup();
 
-// Add event listeners once the page and all the resources are loaded
-
-window.addEventListener('load', signup.addListeners )
+window.addEventListener("load", signup.addListeners );

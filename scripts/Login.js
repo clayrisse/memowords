@@ -1,64 +1,59 @@
-"use strict"; //literally from Uros
+'use strict';
 
 class Login {
   constructor() {
     this.emailInput = document.querySelector("#email");
     this.passwordInput = document.querySelector("#password");
-    this.messageContainer = document.querySelector(".message-container");
+
     this.loginButton = document.querySelector("#login-button");
+    this.messageContainer = document.querySelector(".message-container");
   }
 
-
-  // handle the login (when user clicks the Login button)
-  handleSubmit = (event) => {
-    // prevent the reload of the page ( form subit button reloads the page)
+  // gestionar el envio de los datos (evento "submit")
+  submit = (event) => {
     event.preventDefault();
 
-    // get the values from the inputs
-    const email = this.emailInput.value;       // sergi
-    const password = this.passwordInput.value; //  126
+    const usersDB = db.getAllUsers();
 
-    // Get the users from db (localStorage)
-    const users = db.getAllUsers();
+    const email = this.emailInput.value;
+    const password = this.passwordInput.value;
 
-    // Check the password and email exist in the db (localStorage) - 
-    // arr.find() - returns the first element that matches the experssion
-
-    // [ {uros  123},  {sergi  123}, {  tasha   123}   ]
-
-    const user = users.find( function(userObj) {
-      if (userObj.email === email &&  userObj.password === password) {
+    // Intentar encontrar el usuario
+    const user = usersDB.find( (userObj) => {
+      if (userObj.email === email && userObj.password === password) {
         return true;
       }
     })
 
-    // empty the container so that the messages don't add up
-    this.messageContainer.innerHTML = "";
-    const p = document.createElement('p');
 
-    // set the message
-    if (!user) {
-      p.textContent = "Email or password are incorrect!";
-    }
-    else {
-      p.textContent = `Hello ${user.name}!`;
-      p.classList.add('correct-message');
-      // Redirect to the dashboard page
-      this.redirect();
-    }
-
-    this.messageContainer.appendChild(p);
-
+    this.showMessage(user);
   }
 
+  // mostrar el mensaje de error o mensaje de exito
+  showMessage = (user) => {
+    // eliminar el mensaje previo
+    this.messageContainer.innerHTML = "";
+
+    const message = document.createElement('p');
+
+    if (user) {
+      // si el usuario inicia la sesion con exito
+      // agrega la clase para cambiar el color y sobrescribir el estilo anterior
+      message.innerHTML = `hola, ${user.email}`;
+      message.classList.add("correct-message");
+    }
+    else {
+      // si el inicio de sesión no se ha realizado correctamente
+      message.innerHTML = 'el email o/y password son incorectos';
+    }
+
+    this.messageContainer.appendChild(message);
+
+    if (user) this.redirect();
+  }
 
   redirect = () => {
-    setTimeout( function () {
-      location.assign("index.html")
-    }, 2000)
-
-    // setTimeout( () => location.assign("dashboard.html"), 2000)
-
+    setTimeout( ()=> location.assign('index.html'), 2000);
   }
 
 }
@@ -66,11 +61,7 @@ class Login {
 
 const login = new Login();
 
-window.addEventListener('load', function () {
-
-  login.loginButton.addEventListener('click', login.handleSubmit );
-
-} )
+login.loginButton.addEventListener("click", login.submit);
 
 
 // Creating methods in a class block:

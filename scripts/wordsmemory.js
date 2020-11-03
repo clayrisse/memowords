@@ -15,9 +15,8 @@ function flipCard() {
             console.log("pieck1", pick1)
             flipCardStatus = true;
             return // return to get out a wait fro click n2
-        } else if (pick1===this) {
-            return
-        }
+        } else if (pick1===this) return
+        
         //ELSE TURN BACK FLIPSTATUS AND ASIGN PICK2 AND RUN FUNCTION TO CHECK IF IT MATCHES
         pick2 = this;
         flipCardStatus = false;
@@ -26,19 +25,13 @@ function flipCard() {
         return checkPair()
 }
 
-// let superS = document.querySelector('.supersuper') 
-// console.log("claaaaaaaaaaaaaas",superS.getAttribute('class'))
-// let superX=superS.getAttribute('class')
-// console.log(superX.split(" ").includes("big"))
-
 function resetPick () {
     //has to reser p1 ,p2 and flip status before each hand
 }
 
 function checkPair() {
-  console.log("hello from checkpair")
-  console.log(pick1.dataset.pair)
-  console.log(pick2.dataset.pair)
+  console.log("hello from checkpair", pick1.dataset.pair, pick2.dataset.pair)
+  
     //CHECK IF .dataset.  PAIR(data-pair) match
     if (pick1.dataset.pair===pick2.dataset.pair ){ //IF PAIRED P1=P2? DISABLE PICKED : TURNOROUND CARDS
         //IF THEY DO, REMOVE EVENT LISTENERS AND RETURN 

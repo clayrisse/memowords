@@ -66,6 +66,7 @@ function printShuffleOrderTesting() { //NOT TO USE.
     for (let i = 1; i <= boardSize/2; i++){
         const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
         keyWord.setAttribute("data-pair", `${i}`)
+        keyWord.classList.add('word')
         const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
         keyDefi.setAttribute("data-pair", `${i}`)
         const word = document.createElement('p');
@@ -84,6 +85,9 @@ function printShuffleOrderTesting() { //NOT TO USE.
 
         keyWord.addEventListener('click', flipCard)
         keyDefi.addEventListener('click', flipCard)
+
+
+        
     }
 }
 // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
@@ -157,7 +161,7 @@ function getWordFromApi() {
 
             }
             // console.log("wordInfo---", wordInfo)
-            console.log("memowords--", memoWords)
+            // console.log("memowords--", memoWords)
     })
    
     .catch(err => {
@@ -174,8 +178,8 @@ function setSetings() {
 
     makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
-    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
+    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 
 } 
 
