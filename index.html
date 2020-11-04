@@ -15,7 +15,7 @@
             <nav class="navbar">
                 <div class="" id="nav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="" href="./index.html">Home</a></li>
+                        <!-- <li class="nav-item"><a class="" href="./index.html">Home</a></li> -->
                         <!-- <li class="nav-item"><a class="" href="./memowords.html">Play</a></li> -->
                         <li class="nav-item"><a class="" href="./login.html">Log in</a></li>
                         <li class="nav-item"><a class="" href="./signup.html">Sign up</a></li>
@@ -25,14 +25,22 @@
         </header>
        
         <main>
-            <!-- <header class="">                
-                <figure>
-                    <img class="homepagelogo" src="" alt="MemoWords Logo">
-                </figure>
-            </header> -->
-            <br/><br/>
-           
-                <select id="boardsize"  name="">
+            <header id="headertitle">
+                <div id="turntitle">
+                    <h1 class="pagetitle turn">W</h1> <h1 class="pagetitle">emo</h1>
+                </div>
+                <hr size="2">
+                <!-- <hr size="2"> -->
+                <div >
+                    <h1 class="bitbiger pagetitle">Words</span></h1>
+                </div>
+                <!-- <div>
+                    <h1 class="pagetitle">Words</h1>
+                </div> -->
+                <!-- <p id="pagetitle" class="turn">W</p> <p id="pagetitle"></p><p id="pagetitle">W</p> -->
+            </header>
+            <section id="gamemenu">       
+                <select id="boardsize" class="select-css"  name="">
                     <option value=4 disabled selected hidden>Board Size</option>
                     <option value=4>4</option>
                     <option value=6>6</option>
@@ -41,7 +49,7 @@
                     <option value=24 class="bigscreen" >24</option>
                     <option value=30 class="bigscreen" >30</option>
                 </select>
-                <select id="levelchoise"  name="">
+                <select id="levelchoise" class="select-css"  name="">
                     <option value="wA1" disabled selected hidden>Word Dificulty</option>
                     <option value="wA1">A1</option>
                     <option value="wA2">A2</option>
@@ -51,25 +59,15 @@
                     <option value="wC2">C2</option>
                     <option value="wD1">D1</option>
                 </select>
-                <select id="levelgod"  name="">
+                <select id="levelgod" class="select-css"  name="">
                     <option value=true disabled selected hidden>Level God?</option>
                     <option value="" <!-- EmptyValue! --> >Hell yes!</option>
                     <option value=true  >With a little help from my friends</option>
                     
                 </select>
-
                 
-                <button id="btnseting">submit settings</button>
-            
-            <section id="game" >
-                <div id="board" class="">
-                    
-                </div>
-               
+                <button id="btnseting">PLAY</button>
             </section>
-
-         
-
         </main>
 
         <footer class="">
