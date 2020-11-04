@@ -2,8 +2,11 @@
 let pick1
 let pick2
 let flipCardStatus = false
+let isPairPlayingOut = false
 function flipCard() {
-    console.log("memowords--", memoWords)
+
+    if (isPairPlayingOut) return
+
     //ADD CLASS "PICKED" TO this. CARD witch is what ever clicks it listens
     this.classList.add('picked');
     
@@ -42,13 +45,16 @@ function checkPair() {
 
     //ELSE TURN CARDS BACK AGAIN unflip  AND REMOVE "PICKED"CLASS WITH SOME TIMEOUT
     //turn around card after some time to be able to see it
-    let flipedTime = 6000
+    isPairPlayingOut = true
+    let flipedTime = 4500
     if (pick2.classList[1] === "word"){
-        flipedTime = 2500    //shorter time if they are just the "word"
+        flipedTime = 3000    //shorter time if they are just the "word"
     }
-            setTimeout(() => {
-                pick1.classList.remove('picked');
-                pick2.classList.remove('picked');
-            }, flipedTime);
+    setTimeout(() => {
+        pick1.classList.remove('picked');
+        pick2.classList.remove('picked');
+        isPairPlayingOut = false
+        console.log("-------",isPairPlayingOut, flipCardStatus, pick1, pick2)
+    }, flipedTime);
 }
 

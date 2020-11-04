@@ -5,9 +5,13 @@ let shuffleOrder = [];
 let cardArr = [];
 let wordsArr = []
 
+const palette = ["#cb997e","#ddbea9","#ffe8d6","#b7b7a4","#a5a58d","#6b705c"]
+
 const urlParams = new URLSearchParams(window.location.search);
 const boardSizeImput = urlParams.get('boardSizeImput');
 const levelChoiseImput = urlParams.get('levelChoiseImput');
+const levelGod = urlParams.get('levelGod');
+
 let boardSize = boardSizeImput;
 let levelChoise = "";
     switch (levelChoiseImput){
@@ -73,9 +77,15 @@ function printShuffleOrderTesting() { //NOT TO USE.
         const definition = document.createElement('p');
         
         word.setAttribute("data-word", `${(i*2)-2}`)
-        word.setAttribute("class", `frontside`)
+        word.setAttribute("class", `front tile`)
         definition.setAttribute("data-def", `${(i*2)-1}`)
-        definition.setAttribute("class", `frontside`)
+        definition.setAttribute("class", `front tile`)
+        
+        if (levelGod) {
+            // console.log("levelGod4", levelGod)
+            word.style.backgroundColor = `${palette[(i-1)%6]}`
+            definition.style.backgroundColor = `${palette[(i-1)%6]}`
+        }
         
         word.textContent = `pipi${(i*2)-2}`;
         definition.textContent = `pipi${(i*2)-1}`;
@@ -86,8 +96,6 @@ function printShuffleOrderTesting() { //NOT TO USE.
         keyWord.addEventListener('click', flipCard)
         keyDefi.addEventListener('click', flipCard)
 
-
-        
     }
 }
 // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
@@ -130,38 +138,44 @@ function getWordFromApi() {
         memoWords.push(wordObj)
         return memoWords
         })
-
+                
         //-------selection creation and appendind of elements or words and definition
-        for (let i = 1; i <= boardSize/2; i++){
-            let randomePick = getRandomIndex(wordInfo[i-1].results)
-            // console.log("wordInfo", wordInfo)
+    for (let i = 1; i <= boardSize/2; i++){
+        let randomePick = getRandomIndex(wordInfo[i-1].results)
+     
 
-                const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
-                keyWord.setAttribute("data-pair", `${i}`)
-                keyWord.classList.add('word')
-                const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
-                keyDefi.setAttribute("data-pair", `${i}`)
-
-                const word = document.createElement('p');
-                const definition = document.createElement('p');
-                
-                word.setAttribute("data-word", `${(i*2)-2}`)
-                word.setAttribute("class", `frontside`)
-                definition.setAttribute("data-def", `${(i*2)-1}`)
-                definition.setAttribute("class", `frontside`)
-                
-                word.textContent = `${wordInfo[i-1].word}`;
-                definition.textContent = `${wordInfo[i-1].results[randomePick].definition}`;
-                
-                keyWord.appendChild(word) 
-                keyDefi.appendChild(definition)         
-                
-                keyWord.addEventListener('click', flipCard)
-                keyDefi.addEventListener('click', flipCard)
-
+            const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
+            keyWord.setAttribute("data-pair", `${i}`)
+            keyWord.classList.add('word')
+            const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
+            keyDefi.setAttribute("data-pair", `${i}`)
+            
+            const word = document.createElement('p');
+            const definition = document.createElement('p');
+            
+            word.setAttribute("data-word", `${(i*2)-2}`)
+            word.setAttribute("class", `front tile`)
+            definition.setAttribute("data-def", `${(i*2)-1}`)
+            definition.setAttribute("class", `front tile`)
+            
+            if (levelGod) {
+                // console.log("levelGod4", levelGod)
+                word.style.backgroundColor = `${palette[(i-1)%6]}`
+                definition.style.backgroundColor = `${palette[(i-1)%6]}`
             }
-            // console.log("wordInfo---", wordInfo)
-            // console.log("memowords--", memoWords)
+            
+            word.textContent = `${wordInfo[i-1].word}`;
+            definition.textContent = `${wordInfo[i-1].results[randomePick].definition}`;
+            
+            keyWord.appendChild(word) 
+            keyDefi.appendChild(definition)         
+            
+            keyWord.addEventListener('click', flipCard)
+            keyDefi.addEventListener('click', flipCard)
+
+        }
+    
+        console.log("wordInfo---", wordInfo, "memowords--", memoWords)
     })
    
     .catch(err => {
@@ -178,8 +192,8 @@ function setSetings() {
 
     makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
-    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
+    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 
 } 
 

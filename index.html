@@ -32,26 +32,30 @@
             </header> -->
             <br/><br/>
            
-                <!-- <input id="boardsize" value="2" placeholder="BoardSize"/> -->
-                <!-- <input id="levelchoise" value="wC1" placeholder="Level"/> -->
                 <select id="boardsize"  name="">
-                    <!-- <option value="" selected disabled hidden>Select Level</option> -->
-                    <option value=4 selected>4</option>
+                    <option value=4 disabled selected hidden>Board Size</option>
+                    <option value=4>4</option>
                     <option value=6>6</option>
                     <option value=12>12</option>
-                    <option value=18>18</option>
-                    <option value=24>24</option>
-                    <option value=30>30</option>
+                    <option value=18 class="bigscreen" >18</option>
+                    <option value=24 class="bigscreen" >24</option>
+                    <option value=30 class="bigscreen" >30</option>
                 </select>
                 <select id="levelchoise"  name="">
-                    <!-- <option value="" selected disabled hidden>Select Level</option> -->
-                    <option value="wA1" >A1</option>
+                    <option value="wA1" disabled selected hidden>Word Dificulty</option>
+                    <option value="wA1">A1</option>
                     <option value="wA2">A2</option>
                     <option value="wB1">B1</option>
                     <option value="wB2">B2</option>
                     <option value="wC1">C1</option>
                     <option value="wC2">C2</option>
                     <option value="wD1">D1</option>
+                </select>
+                <select id="levelgod"  name="">
+                    <option value=true disabled selected hidden>Level God?</option>
+                    <option value="" <!-- EmptyValue! --> >Hell yes!</option>
+                    <option value=true  >With a little help from my friends</option>
+                    
                 </select>
 
                 
@@ -68,13 +72,10 @@
 
         </main>
 
-        <!-- <footer class="">
-                    <p>by Claudia Layrisse for IronHack WDFT 062020</p>
-                    <p>using API: WORDSAPI in rapidAPI (wordsapi.com)</p>
-        </footer> -->
-        <!-- scripts---------------------------------------- -->
-        <!-- <script src="./scripts/Word.js"></script> -->
-        <!-- <script src="./scripts/wordsCatalogue.js"></script> -->
+        <footer class="">
+            <p>by Claudia Layrisse for IronHack WDFT 062020</p>
+            <p>using API: WORDSAPI in rapidAPI (wordsapi.com)</p>
+        </footer>
         <!-- <script src="./scripts/wordsAPI.js"></script> -->
         <script src="./scripts/wordIndex.js"></script>
         <!-- <script src="./scripts/wordsmemory.js"></script> -->

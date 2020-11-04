@@ -1,9 +1,35 @@
 /* @import "styleReset.css"; */
 /* @import "styleReset.css"; */
+:root {
+    --darwarm: #cb997e;
+    --medwarm: #ddbea9;
+    --base: #ffe8d6;
+    --ligcold: #b7b7a4;
+    --medcold: #a5a58d;
+    --darcold:#6b705c;
+  }
 
+
+
+  /* Array */
+/* ["cb997e","ddbea9","ffe8d6","b7b7a4","a5a58d","6b705c"] */
+
+/* Object */
+/* {   "Antique Brass":"cb997e",
+    "Desert Sand":"ddbea9",
+    "Champagne Pink":"ffe8d6",
+    "Ash Gray":"b7b7a4",
+    "Artichoke":"a5a58d",
+    "Ebony":"6b705c"} */
+  /* .container {
+    color: var(--base);
+    background-color: var(--white);
+    padding: 15px;
+  } */
 
 body {
-    background-color: #777;
+    background-color: var(--darcold);
+    color:var(--darcold);
     font-size: 20px; 
     font-family: 'Arial', serif;
     /* margin: 15px ;  */
@@ -12,7 +38,7 @@ body {
 
 
 .navbar {
-    background-color: rgba(255, 0, 0, 0.356);
+    background-color: transparent;
     position: fixed; /*cambiar en res 500 y 1000. y ponerla hidden en 1000*/
     width: 100%;
     top: 0px;
@@ -67,8 +93,8 @@ a {
     
   }
   .inputfield{
-    background-color: rgba(255, 0, 0, 0.356);
-    color:#ccc;
+    background-color: var(--medwarm);
+    color:#333;
     font-size:0.8rem;
     width: 100%;
     padding: 10px 0px 10px 0px;
@@ -90,7 +116,7 @@ a {
   }
   
   button {
-    background-color: rgb(0, 0, 0);
+    background-color: var(--darcold);
     color:#ccc;
     font-family: 'Arial', serif;
     font-size: 1.4rem;

@@ -27,7 +27,7 @@ p {
     width: 180px;
     height: 180px;
     margin: 5px;
-    box-shadow: 3px 3px 5px rgba(46, 46, 46, 0.616);
+    box-shadow: 8px 8px 18px rgba(46, 46, 46, 0.616);
     /* transform: scale(1); */
     transform-style: preserve-3d;
     transition: transform .6s;
@@ -42,8 +42,7 @@ p {
     transform: rotateY(180deg);
 }
 
-.frontside,
-.backside {
+.front {
     background: #ffffff;
     position: absolute;
     width: 100%;
@@ -51,6 +50,6 @@ p {
     /* padding: 0px; //the padding makes it bigger when fliped */
     backface-visibility: hidden;
 }
-.frontside {
+.front{
     transform: rotateY(180deg);
   }
