@@ -1,5 +1,7 @@
 #gamemenu {
     margin:2rem 5rem 3rem;
+    max-width: 400px;
+       
     /* display: flex; */
     /* height: 2rem; */
     /* width: 500px; */
@@ -51,4 +53,37 @@
 
 .select-css:disabled:hover, .select-css[aria-disabled=true] {
     border-color: var(--c3);
+}
+
+
+#btnseting {
+    background-color: var(--c0);
+    color:var(--c3);
+    font-family: 'Comfortaa', cursive;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 8px;
+    margin: 1rem 0px 2rem;
+    width: 100%;
+    border: none;
+}
+#btnseting:hover{
+    transform: scale(1.2)
+}
+
+@media (min-width: 576px){
+    #gamemenu {
+        margin: auto ;
+    }
+    .select-css {
+        font-size: 1.rem;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    #btnseting {
+        font-size: 1.3rem;
+        padding: 10px;
+    }
+
 }

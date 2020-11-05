@@ -81,6 +81,7 @@ class Signup {
 
     this.showSuccessMessage();
     this.removeMessages();
+    this.redirect()
   }
 
  
@@ -126,7 +127,9 @@ class Signup {
       this.errorsWrapper.appendChild(errorMessageP);
     })
   }
-
+  redirect = () => {
+      setTimeout( ()=> location.assign('index.html'), 2000);
+    }
 
    //register functions for each input/field
    addListeners = () => {
@@ -136,6 +139,7 @@ class Signup {
     this.repeatPasswordInput.addEventListener("input", this.handleRepeatPasswordInput);
     this.buttonInput.addEventListener("click", this.saveData);
   }
+  
 }
 
 

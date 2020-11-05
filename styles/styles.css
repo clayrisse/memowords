@@ -2,68 +2,48 @@
 /* @import "styleReset.css"; */
 
 
-@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans:wght@800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap'); */
-
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600&display=swap');
 @import "stylesSelectImput.css";
-:root {
-    --darwarm: #cb997e;
-    --medwarm: #ddbea9;
-    --base: #ffe8d6;
-    --ligcold: #b7b7a4;
-    --medcold: #a5a58d;
-    --darcold:#6b705c;
-  }
+
 :root {
   --c00: #FBF3EF;
-  /* --c0: #f7e6de; */
   --c0: #F3D9CD;
+  --c1: #e6b8a2;
+  --c2: #d69f7e;
+  --c3: #c38e70;
+  --c4: #9d6b53;
+  --c5: #774936;
+  --c6: #382419;
+}
+  /* --c0: #f7e6de; */
   /* --DesertSand: #edc4b3; */
   /* --c0: #edc4b3; */
   /* --Tumbleweed: #e6b8a2; */
-  --c1: #e6b8a2;
   /* --Tumbleweed2: #deab90; */
   /* --c2: #deab90; */
   /* --Tumbleweed3: #d69f7e; */
-  --c2: #d69f7e;
   /* --AntiqueBrass: #cd9777; */
   /* --c4: #cd9777; */
   /* --AntiqueBrass2: #c38e70; */
-  --c3: #c38e70;
   /* --CafeAuLait: #b07d62; */
   /* --c6: #b07d62; */
   /* --BrownSugar: #9d6b53; */
-  --c4: #9d6b53;
   /* --Coffee: #8a5a44; */
   /* --c8: #8a5a44; */
   /* --Coffee2: #774936; */
-  --c5: #774936;
 
-  --c6: #382419;
-}
 
 body {
   background-color: var(--c2);
   color:var(--c6);
   font-size: 10px; 
-  /* font-family: 'Arial', serif; */
-  /* font-family: 'Syne Mono', monospace; */
-  /* font-family: 'Open Sans', sans-serif; */
+
   font-family: 'Comfortaa', cursive;
   /* margin: 15px ;  */
   line-height: 22px;
   text-align: center;
+  
   /* margin: 2rem; */
   }
 .navbar {
@@ -79,20 +59,24 @@ body {
 
 }
 nav ul {
-  /*float: right; @media 600*/
+  /* float: right; @media 600 */
   text-align: center;
   padding: 0;
   margin: 0;
 }
+nav li img{
+  height: 22px;
+  margin: 0 -10 0 -30px;
+}
 nav li {
   display: inline-block;
-  padding: .8rem 1.9em;/*cambiar en res 500 y 100*/ 
+  padding: .8rem 1em;/*cambiar en res 500 y 100*/ 
   
 }
 a { 
   color: var(--c4);
   font-weight: 600;
-  font-size: 1.2rem;/*cambiar en res 500 y 100*/
+  font-size: 1.1rem;/*cambiar en res 500 y 100*/
   text-decoration: none;  
 }
 #headertitle {
@@ -126,35 +110,23 @@ hr{
   font-size: 6.0rem;
   margin: 0px 0px 0px -10px;
 }
-.daark {
-  color: var(--c1);
-}
 
-#btnseting {
-  background-color: var(--c0);
-  color:var(--c3);
-  font-family: 'Comfortaa', cursive;
-  font-weight: 600;
-  font-size: 1.2rem;
-  padding: 8px;
-  margin: 1rem 0px 2rem;
-  width: 100%;
-  border: none;
-
-}
 #instructions{
   color: var(--c6);
   text-align: left;
   font-size: 1rem;
   font-weight: 400;
-  margin: 5rem 0;
+  max-width: 55rem;
+  margin: 6rem auto;
 }
 
 #instructions p{
 padding: 1rem 1.5rem;
+max-width: 55rem;
+    /* margin: 6rem auto; */
 }
 footer{
-  color:var(--c1);
+  color:var(--c0);
   font-size: .7rem;
   padding: 20px 0 20px
 }
@@ -202,7 +174,7 @@ footer{
   box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
   border-radius: 0em;
   padding: 8px 0px 7px 0px;
-  margin: 1.8rem 0 .8rem ;
+  margin: 1.8rem 0 .8rem 0px ;
   /* text-align: left; */
 }
 
@@ -241,24 +213,174 @@ footer{
     border: none;
     
   }
-
-  
-
+  button:hover {
+    transform: scale(1.2);
+  }
 
 
 
   
 /* -----------M E D I A   Q U E R Y S---------*/
 
- @media (min-width: 576px){
-   
+@media (min-width: 576px){
+  body {
+    font-size: 12px; 
+    line-height: 25px;
+  }
+  .navbar {
+    position: fixed; 
+    margin: 1.5vh 0 0;
+  }
+  .fixnav {
+    position: static; 
+  }
+  .nose {
+    float: right; 
+    margin: 15px 35px 0 10px; 
+  }
+  .navhome{
+    float: left; 
+    margin: 5px 0px 0 35px;
+  }
+  .navright{
+    float: right;
+    margin: 15px 35px 0 10px; 
+  }
+  nav li {
+    padding: .8rem .0em;
+  }
+  
+  nav li img{
+    height: 30px;
+  }
+  a { 
+    font-size: 1.2rem;
+  }
+  /*---------------------------------------------*/
+
+  #headertitle {
+    padding: 10vh 0px 12vh;
+  }
+  .pagetitle {
+    font-size: 9rem;
+    padding: 3.2rem 0px 3.2rem;
+  }
+  .bitbiger {
+    font-size: 9.2rem;
+  }
+  #instructions p{
+    margin: 0 auto;
+  }
+  footer{
+    font-size: .9rem;
+    padding: 20px 0 30px
+  }
     
-  
+    /*----------F O R M S   S T U F F s------------*/
+  .titlepage {
+    font-size:2.0rem;
+    padding: 12vh 0px 3vh;
   }
+  form {
+    text-align: right;
+    margin: 30px auto 60px ;
+    width: 80%;
+    max-width: 400px;
+  }
+  form div {
+    margin: -.9rem 0;
+  }
+  .inputtitle{
+    font-size: 1rem;
+  }
+  .inputfield{
+    font-size:1.2rem;
+    line-height: 1;
+    margin: 2rem 0 .6rem ;
+  }
+  form p {
+    margin: 4rem 0 0rem;
+    font-size: .75rem;
+  }
+  form a {
+    color: var(--c0);
+    font-size: .75rem;
+  }
+  button {
+    font-size: 1.3rem;
+    margin: 40px 0px 30px;
+  }
+  button:hover {
+    transform: scale(1.2);
+  }
+}
+
+
+ @media (min-width: 992px) {
   
+    .navbar {
+      margin: 0 0 0;
+    }
+    .navhome{
+      float: left; 
+      margin: 5px 0px 0 35px;
+    }
+    nav li {
+      padding: .5rem .0em;
+    }
+    
+    /*---------------------------------------------*/
   
-   @media (min-width: 992px) {
-   
+    #headertitle {
+      padding: 10vh 0px 12vh;
+    }
+    .pagetitle {
+      font-size: 12rem;
+      padding: 4.2rem 0px 4.2rem;
+    }
+    .bitbiger {
+      font-size: 12.2rem;
+    }
+    
+    footer{
+      font-size: .9rem;
+      padding: 20px 0 30px
+    }
+      
+      /*----------F O R M S   S T U F F s------------*/
+    .titlepage {
+      /* font-size:2.5rem; */
+      /* padding: 12vh 0px 3vh; */
+    }
+    form {
+      /* text-align: right; */
+      /* margin: 30px auto 60px ; */
+      /* width: 80%; */
+      /* max-width: 450px; */
+    }
+    form div {
+      /* margin: -.9rem 0; */
+    }
+    .inputtitle{
+      /* font-size: 1.2rem; */
+    }
+    .inputfield{
+      /* font-size:1.2rem; */
+      /* line-height: 1.4; */
+      /* margin: 3rem 0 1rem ; */
+    }
+    form p {
+      /* margin: 4rem 0 0rem; */
+      /* font-size: 1rem; */
+    }
+    form a {
+      /* color: var(--c0); */
+      /* font-size: 1rem; */
+    }
+    button {
+      /* font-size: 1.6rem; */
+      /* margin: 40px 0px 30px; */
+    }
+
  
-   
-  }
+}
