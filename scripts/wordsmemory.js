@@ -4,7 +4,7 @@ let pick2
 let flipCardStatus = false
 let isPairPlayingOut = false
 let pairCounter = 0
-console.log("pairCounter:", boardSize)
+
 function flipCard() {
 
     if (isPairPlayingOut) return
@@ -14,7 +14,6 @@ function flipCard() {
     
     //CHECK if IT HAS BEEN FLIPED 
         //IF NOT, CHANGE FLIPSTATUS AND ASIGN PICK1 AND GET OUT OF FUNCTION
-        
         if (flipCardStatus === false){
             pick1 = this;
             console.log("pieck1", pick1)
@@ -28,10 +27,6 @@ function flipCard() {
         console.log("pieck2", pick2)
 
         return checkPair()
-}
-
-function resetPick () {
-    //has to reser p1 ,p2 and flip status before each hand
 }
 
 function checkPair() {
@@ -65,20 +60,12 @@ function checkPair() {
 }
 
 function endMessage() {
-    const messageBox = document.querySelector('#game')
-console.log("meeeeeeeessagebox", messageBox)
-// 
-            messageBox .setAttribute("class", `endmessage`)
-            // keyWord.classList.add('word')
- 
-            
-            const message = document.createElement('div');
+    const messageBox = document.querySelector('#endmessage')
+    messageBox .setAttribute("class", `endmessage`)
 
-            message.innerHTML= `<h2>Congrats!, you get less dumb every day ;)</h2>`;
-            
-            messageBox.appendChild(message) 
-        
-            
-          
+    const message = document.createElement('div');
+    message.innerHTML= `<h2>Congrats dude! You get less dumb every day ; )</h2>`;
+    
+    messageBox.appendChild(message) 
 }
  

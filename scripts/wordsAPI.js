@@ -15,6 +15,9 @@ const levelChoiseImput = urlParams.get('levelChoiseImput');
 const levelGod = urlParams.get('levelGod');
 
 let boardSize = boardSizeImput;
+let gameMaxCss = document.querySelector('#game')
+gameMaxCss.classList.add(`b${boardSize}`); 
+
 let levelChoise = "";
     switch (levelChoiseImput){
         case "wA1": levelChoise = level.wA1; break;
@@ -52,6 +55,7 @@ function getBoardStarted() { // Loop to list tag elem to asign later by data-key
     for (let i = 1; i<=boardSize/2; i++) {
         const divWord = document.createElement('div');
         const divDefi = document.createElement('div');
+
         divWord.setAttribute("data-key", (i*2)-1)
         divWord.setAttribute("class", `memocard`)
         divDefi.setAttribute("data-key", (i*2)-2)
@@ -64,6 +68,17 @@ function getBoardStarted() { // Loop to list tag elem to asign later by data-key
 
 function audioTesting(){ //test to see if addlistener are active
     console.log("im listening")
+}
+
+function makeArrOfWordsToFetch(levelChoise) {
+    let wordListRaw = levelChoise.split("\n")    
+    let wordListClean = wordListRaw.map(x=>x.split(" ")[0])
+ 
+    for (let i = 1; i <= boardSize/2; i++) {
+        const randomWord = wordListClean[getRandomIndex(wordListClean)]
+        wordsArr.push(randomWord)
+    }
+    return wordsArr
 }
 
 function printShuffleOrderTesting() { //NOT TO USE. 
@@ -82,11 +97,11 @@ function printShuffleOrderTesting() { //NOT TO USE.
         definition.setAttribute("data-def", `${(i*2)-1}`)
         definition.setAttribute("class", `front tile`)
         
-        // if (levelGod) {
-        //     // console.log("levelGod4", levelGod)
-        //     word.style.backgroundColor = `${palette[(i-1)%6]}`
-        //     definition.style.backgroundColor = `${palette[(i-1)%6]}`
-        // }
+        if (levelGod) {
+            // console.log("levelGod4", levelGod)
+            word.style.backgroundColor = `${palette[(i-1)%6]}`
+            definition.style.backgroundColor = `${palette[(i-1)%6]}`
+        }
         
         word.textContent = `pipi${(i*2)-2}`;
         definition.textContent = `pipi${(i*2)-1}`;
@@ -98,19 +113,7 @@ function printShuffleOrderTesting() { //NOT TO USE.
         keyDefi.addEventListener('click', flipCard)
 
     }
-}
-// printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
-
-function makeArrOfWordsToFetch(levelChoise) {
-    let wordListRaw = levelChoise.split("\n")    
-    let wordListClean = wordListRaw.map(x=>x.split(" ")[0])
- 
-    for (let i = 1; i <= boardSize/2; i++) {
-        const randomWord = wordListClean[getRandomIndex(wordListClean)]
-        wordsArr.push(randomWord)
-    }
-    return wordsArr
-}
+} // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
 
 function getWordFromApi() {    
        
@@ -141,8 +144,8 @@ function getWordFromApi() {
         })
                 
         //-------selection creation and appendind of elements or words and definition
-    for (let i = 1; i <= boardSize/2; i++){
-        let randomePick = getRandomIndex(wordInfo[i-1].results)
+        for (let i = 1; i <= boardSize/2; i++){
+            let randomePick = getRandomIndex(wordInfo[i-1].results)
      
 
             const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
@@ -173,18 +176,13 @@ function getWordFromApi() {
             
             keyWord.addEventListener('click', flipCard)
             keyDefi.addEventListener('click', flipCard)
-
         }
-    
         console.log("wordInfo---", wordInfo, "memowords--", memoWords)
     })
-   
     .catch(err => {
         console.log(err);
     })
-
 }
-
 
 function setSetings() {
     getArraysSetUp();   // console.log("cardArr:", cardArr, "numberOrder:",numberOrder);
@@ -193,9 +191,8 @@ function setSetings() {
 
     makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
-    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
-
+    printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
+    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 } 
 
 window.addEventListener('load', setSetings)

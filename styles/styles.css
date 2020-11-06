@@ -203,6 +203,12 @@ form a {
   font-size: .9rem;
   margin: 0 auto;
 }
+#message-container p{
+  margin-top: -50px;
+  font-size: 50px;
+  color: yellow;
+
+}
 
 button {
   background-color: var(--c1);
@@ -302,7 +308,7 @@ button:hover {
     margin: 2rem 0 .6rem ;
   }
   form p {
-    margin: 4rem 0 0rem;
+    margin: 0rem 0 0rem;
     font-size: .75rem;
   }
   form a {
