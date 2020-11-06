@@ -106,4 +106,4 @@ https://github.com/clayrisse/memowords
 
 
 #### **Slides**
-URls for the project presentation (slides) Link Slides.com
+https://docs.google.com/presentation/d/1yPKJyxXkFivp2somws5a15dq5YoVex8HVF1box5ndQo/edit?usp=sharing
