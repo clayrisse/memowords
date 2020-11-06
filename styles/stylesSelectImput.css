@@ -1,6 +1,6 @@
 #gamemenu {
     margin:2rem 5rem 3rem;
-    max-width: 400px;
+    max-width: 350px;
        
     /* display: flex; */
     /* height: 2rem; */
@@ -10,7 +10,7 @@
 .select-css {
     background-color: var(--c2);
     display: block;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: 'Comfortaa', cursive;
     font-weight: 600;
     color:var(--c5);
@@ -76,7 +76,7 @@
         margin: auto ;
     }
     .select-css {
-        font-size: 1.rem;
+        font-size: 1.0rem;
         font-weight: 600;
         line-height: 1.5;
     }
@@ -86,4 +86,14 @@
         padding: 10px;
     }
 
+}
+
+@media (min-width: 992px) {
+
+#gamemenu {
+    text-align: right;
+    /* margin:0rem 0rem 0rem 50rem; */
+    max-width: 200px;
+       
+}
 }

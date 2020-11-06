@@ -1,8 +1,7 @@
 /* @import "styleReset.css"; */
 /* @import "styleReset.css"; */
 
-
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600&display=swap');
 @import "stylesSelectImput.css";
 
@@ -41,7 +40,7 @@ body {
 
   font-family: 'Comfortaa', cursive;
   /* margin: 15px ;  */
-  line-height: 22px;
+  /* line-height: 20px; */
   text-align: center;
   
   /* margin: 2rem; */
@@ -79,8 +78,12 @@ a {
   font-size: 1.1rem;/*cambiar en res 500 y 100*/
   text-decoration: none;  
 }
+.ligthfont a{
+  color: var(--c1);
+}
 #headertitle {
   text-align: center;
+  
   padding: 8vh 0px 10vh;
 }
 hr{
@@ -99,7 +102,7 @@ hr{
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
   font-size: 5.8rem;
-  padding: 5vh 0px 5vh;
+  padding: 1vh 0px 1vh;
 }
 .turn{
   transform: rotateX(180deg);
@@ -189,33 +192,33 @@ footer{
   outline: none;
 }
   
-  form p {
-    color: var(--c6); 
-    margin-top: 40px;
-    text-align: center;
-    font-size: .9rem;
-  }
-  form a {
-    color: var(--c0);
-    font-size: .9rem;
-    margin: 0 auto;
-  }
+form p {
+  color: var(--c6); 
+  margin-top: 40px;
+  text-align: center;
+  font-size: .9rem;
+}
+form a {
+  color: var(--c0);
+  font-size: .9rem;
+  margin: 0 auto;
+}
+
+button {
+  background-color: var(--c1);
+  color: var(--c3);
+  font-family: 'Comfortaa', cursive;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 8px;
+  margin: 40px 0px 20px;
+  width: 12rem;
+  border: none;
   
-  button {
-    background-color: var(--c1);
-    color: var(--c3);
-    font-family: 'Comfortaa', cursive;
-    font-weight: 600;
-    font-size: 1.4rem;
-    padding: 8px;
-    margin: 40px 0px 20px;
-    width: 12rem;
-    border: none;
-    
-  }
-  button:hover {
-    transform: scale(1.2);
-  }
+}
+button:hover {
+  transform: scale(1.2);
+}
 
 
 
@@ -310,77 +313,38 @@ footer{
     font-size: 1.3rem;
     margin: 40px 0px 30px;
   }
-  button:hover {
-    transform: scale(1.2);
-  }
+  
 }
 
 
- @media (min-width: 992px) {
-  
-    .navbar {
-      margin: 0 0 0;
-    }
-    .navhome{
-      float: left; 
-      margin: 5px 0px 0 35px;
-    }
-    nav li {
-      padding: .5rem .0em;
-    }
-    
-    /*---------------------------------------------*/
-  
-    #headertitle {
-      padding: 10vh 0px 12vh;
-    }
-    .pagetitle {
-      font-size: 12rem;
-      padding: 4.2rem 0px 4.2rem;
-    }
-    .bitbiger {
-      font-size: 12.2rem;
-    }
-    
-    footer{
-      font-size: .9rem;
-      padding: 20px 0 30px
-    }
-      
-      /*----------F O R M S   S T U F F s------------*/
-    .titlepage {
-      /* font-size:2.5rem; */
-      /* padding: 12vh 0px 3vh; */
-    }
-    form {
-      /* text-align: right; */
-      /* margin: 30px auto 60px ; */
-      /* width: 80%; */
-      /* max-width: 450px; */
-    }
-    form div {
-      /* margin: -.9rem 0; */
-    }
-    .inputtitle{
-      /* font-size: 1.2rem; */
-    }
-    .inputfield{
-      /* font-size:1.2rem; */
-      /* line-height: 1.4; */
-      /* margin: 3rem 0 1rem ; */
-    }
-    form p {
-      /* margin: 4rem 0 0rem; */
-      /* font-size: 1rem; */
-    }
-    form a {
-      /* color: var(--c0); */
-      /* font-size: 1rem; */
-    }
-    button {
-      /* font-size: 1.6rem; */
-      /* margin: 40px 0px 30px; */
-    }
+@media (min-width: 992px) {
 
- 
+  .navbar {
+    margin: 0 0 0;
+  }
+  .navhome{
+    float: left; 
+    margin: 5px 0px 0 35px;
+  }
+  nav li {
+    padding: .5rem .0em;
+  }
+  
+  /*---------------------------------------------*/
+
+  #headertitle {
+    padding: 12vh 0px 10vh;
+  }
+  .pagetitle {
+    font-size: 10rem;
+    padding: 4.2rem 0px 4.2rem;
+  }
+  .bitbiger {
+    font-size: 10.2rem;
+  }
+  
+  footer{
+    font-size: .9rem;
+    padding: 20px 0 30px;
+  }
 }

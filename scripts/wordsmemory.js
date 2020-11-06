@@ -3,6 +3,8 @@ let pick1
 let pick2
 let flipCardStatus = false
 let isPairPlayingOut = false
+let pairCounter = 0
+console.log("pairCounter:", boardSize)
 function flipCard() {
 
     if (isPairPlayingOut) return
@@ -40,6 +42,9 @@ function checkPair() {
         //IF THEY DO, REMOVE EVENT LISTENERS AND RETURN 
         pick1.removeEventListener('click', flipCard)
         pick2.removeEventListener('click', flipCard)
+        pairCounter += 1
+        if (pairCounter == boardSize/2 ) return endMessage()
+        console.log("pairCounter:", pairCounter)
         return
     }
 
@@ -54,7 +59,26 @@ function checkPair() {
         pick1.classList.remove('picked');
         pick2.classList.remove('picked');
         isPairPlayingOut = false
+      
         console.log("-------",isPairPlayingOut, flipCardStatus, pick1, pick2)
     }, flipedTime);
 }
 
+function endMessage() {
+    const messageBox = document.querySelector('#game')
+console.log("meeeeeeeessagebox", messageBox)
+// 
+            messageBox .setAttribute("class", `endmessage`)
+            // keyWord.classList.add('word')
+ 
+            
+            const message = document.createElement('div');
+
+            message.innerHTML= `<h2>Congrats!, you get less dumb every day ;)</h2>`;
+            
+            messageBox.appendChild(message) 
+        
+            
+          
+}
+ 

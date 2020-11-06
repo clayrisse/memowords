@@ -59,7 +59,6 @@ function getBoardStarted() { // Loop to list tag elem to asign later by data-key
  
         boardSection.appendChild(divWord)
         boardSection.appendChild(divDefi)
-
     }
 }
 
@@ -83,11 +82,11 @@ function printShuffleOrderTesting() { //NOT TO USE.
         definition.setAttribute("data-def", `${(i*2)-1}`)
         definition.setAttribute("class", `front tile`)
         
-        if (levelGod) {
-            // console.log("levelGod4", levelGod)
-            word.style.backgroundColor = `${palette[(i-1)%6]}`
-            definition.style.backgroundColor = `${palette[(i-1)%6]}`
-        }
+        // if (levelGod) {
+        //     // console.log("levelGod4", levelGod)
+        //     word.style.backgroundColor = `${palette[(i-1)%6]}`
+        //     definition.style.backgroundColor = `${palette[(i-1)%6]}`
+        // }
         
         word.textContent = `pipi${(i*2)-2}`;
         definition.textContent = `pipi${(i*2)-1}`;
@@ -182,9 +181,9 @@ function getWordFromApi() {
    
     .catch(err => {
         console.log(err);
-    }); 
+    })
 
-};
+}
 
 
 function setSetings() {
