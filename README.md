@@ -1,5 +1,4 @@
-![](/assets/img/rdme-coinbat.jpg)
-
+![](./assets/images/mw-background.png)
 # **MemoWords**
 
 

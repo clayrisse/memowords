@@ -189,10 +189,10 @@ function setSetings() {
     shuffle();          // console.log("shuffleOrder:",shuffleOrder)
     getBoardStarted();  // console.log(boardSection)
 
-    makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
+    // makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
     // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
-    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 } 
 
 window.addEventListener('load', setSetings)
