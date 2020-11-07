@@ -11,58 +11,40 @@ class Signup {
     this.errorsWrapper = document.querySelector(".message-container");
   }
 
-
-  //mang changes of input 'email'
   handleEmailInput = (event) => {
     const email = event.target.value;
-
-    //remember:validate input email text
     validator.validateValidEmail(email);
-
     const errors = validator.getErrors();
-
-    //if name of email is valid
+    
     if (!errors.invalidEmailError) {
-      //check if email is unique
       validator.validateUniqueEmail(email);
     }
     this.setErrorMessages();
   }
 
-
-  //mang changes of input  'password'
   handlePasswordInput = (event) => {
     const password = event.target.value;
     const passwordRepeat = this.repeatPasswordInput.value;
 
-    //remember: validate input password text
     validator.validatePassword(password);
     validator.validatePasswordRepeat(password, passwordRepeat);
 
     this.setErrorMessages();
   }
 
-
-  //manage changes of input  'repeat-password'
   handleRepeatPasswordInput = (event) => {
     const passwordRepeat = event.target.value;
     const password = this.passwordInput.value;
 
-    //remember:validate input Password tex
-    //remember:validate input repeatPassword text
     validator.validatePassword(password);
     validator.validatePasswordRepeat(password, passwordRepeat);
 
     this.setErrorMessages();
   }
 
-
-  //manage data sending 'submit'
   saveData = (event) => {
-    //we do this to prevent the linked to "a database" cause we dont have one for this project
-    // we cancel it so it doen no load
+    //we do this to prevent the linked to "a database" cause we dont have one for this project. we cancel it so it doesnt no load
     event.preventDefault();
-    //takes the value of each input
     const name = this.nameInput.value;
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
@@ -70,10 +52,8 @@ class Signup {
 
     const newUser = new User(name,  email, password);
 
-     //save new user in our "database" (cause our database will be simulated;)
-    db.saveNewUser( newUser );
+    db.saveNewUser( newUser ); // (our database will be simulated;)
 
-    //empty the form
     this.nameInput.value = "";
     this.emailInput.value = "";
     this.passwordInput.value = "";
@@ -83,12 +63,9 @@ class Signup {
     this.removeMessages();
     this.redirect()
   }
-
  
   showSuccessMessage = () => {
-    // show errors so they dont add up
     this.errorsWrapper.innerHTML = "";
-
     const errorsObj = validator.getErrors();
     // convert  object in an array of strings
     const errorsStringsArr = Object.values(errorsObj);
@@ -103,47 +80,36 @@ class Signup {
     this.errorsWrapper.appendChild(successMessageP);
   }
 
-
   removeMessages = () => {
     setTimeout( () => {
       this.errorsWrapper.innerHTML = "";
     }, 2000)
   }
 
-
   setErrorMessages = () => {
-    //empties all errors so they dont add
     this.errorsWrapper.innerHTML = "";
-    
     const errorsObj = validator.getErrors();
-
-    //conver object to array of strings
-    const errorsStringsArr = Object.values(errorsObj);
+    const errorsStringsArr = Object.values(errorsObj);//conver object to array of strings
 
     errorsStringsArr.forEach( (errorStr) => {
       const errorMessageP = document.createElement('p');
       errorMessageP.innerHTML = errorStr;
-
       this.errorsWrapper.appendChild(errorMessageP);
     })
   }
+
   redirect = () => {
       setTimeout( ()=> location.assign('index.html'), 2000);
-    }
+  }
 
-   //register functions for each input/field
-   addListeners = () => {
-    //listens to text changes when we type
+  addListeners = () => {
     this.emailInput.addEventListener("input", this.handleEmailInput );
     this.passwordInput.addEventListener("input", this.handlePasswordInput);
     this.repeatPasswordInput.addEventListener("input", this.handleRepeatPasswordInput);
     this.buttonInput.addEventListener("click", this.saveData);
   }
-  
 }
 
-
-//create a new instance for the Signup (object)
 const signup = new Signup();
 
 window.addEventListener("load", signup.addListeners );

@@ -1,7 +1,6 @@
 class Word {
     constructor () {
 
+        
     }
-
-    
 }

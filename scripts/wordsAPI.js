@@ -5,10 +5,7 @@ let shuffleOrder = [];
 let cardArr = [];
 let wordsArr = []
 
-// const palette = ["#cb997e","#ddbea9","#ffe8d6","#b7b7a4","#a5a58d","#6b705c"]
 const palette = ["#fcc5c8","#fce5b1","#a7dccc","#c9dfb9","#fbd19d","#bfcdd9"]
-
-
 const urlParams = new URLSearchParams(window.location.search);
 const boardSizeImput = urlParams.get('boardSizeImput');
 const levelChoiseImput = urlParams.get('levelChoiseImput');
@@ -191,7 +188,7 @@ function setSetings() {
 
     // makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    // printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
+    printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
     // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 } 
 

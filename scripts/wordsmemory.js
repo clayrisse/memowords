@@ -29,7 +29,7 @@ function flipCard() {
         return checkPair()
 }
 
-function checkPair() {
+checkPair = () => {
   console.log("hello from checkpair", pick1.dataset.pair, pick2.dataset.pair)
   
     //CHECK IF .dataset.  PAIR(data-pair) match
@@ -59,7 +59,7 @@ function checkPair() {
     }, flipedTime);
 }
 
-function endMessage() {
+endMessage = () => {
     const messageBox = document.querySelector('#endmessage')
     messageBox .setAttribute("class", `endmessage`)
 
