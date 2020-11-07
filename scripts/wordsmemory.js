@@ -71,8 +71,7 @@ function endMessage() {
 
     const btnPlay = document.querySelector('#btn-playagain')
     const btnSet = document.querySelector('#btn-gosetting')
-    console.log(btnPlay)
-    // // setTimeout( ()=> location.reload(), 500);
+    
     btnPlay.addEventListener('click', () => location.reload())
     btnSet.addEventListener('click', () => location.assign(`index.html`), 200)
 }
