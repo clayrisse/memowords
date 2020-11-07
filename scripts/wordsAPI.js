@@ -6,6 +6,7 @@ let cardArr = [];
 let wordsArr = []
 
 const palette = ["#fcc5c8","#fce5b1","#a7dccc","#c9dfb9","#fbd19d","#bfcdd9"]
+
 const urlParams = new URLSearchParams(window.location.search);
 const boardSizeImput = urlParams.get('boardSizeImput');
 const levelChoiseImput = urlParams.get('levelChoiseImput');
@@ -25,9 +26,6 @@ let levelChoise = "";
         case "wC2": levelChoise = level.wC2; break;
         case "wD1": levelChoise = level.wD1; break;
     }
-//------------------------------------
-// console.log("boardSizeImput", boardSizeImput, "levelChoiseImput", levelChoiseImput)
-// console.log("boardSize", boardSize, "levelChoise.length", levelChoise.length)
 
 const boardSection = document.querySelector("#board");
 getRandomIndex = (arr) => Math.floor(Math.random()*arr.length)
@@ -78,14 +76,16 @@ function makeArrOfWordsToFetch(levelChoise) {
     return wordsArr
 }
 
-function printShuffleOrderTesting() { //NOT TO USE. 
+function printShuffleOrderTesting() { // shows cards without api
 
     for (let i = 1; i <= boardSize/2; i++){
         const keyWord = document.querySelector(`[data-key="${shuffleOrder[i*2-2]}"]`);
+        const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
+        
         keyWord.setAttribute("data-pair", `${i}`)
         keyWord.classList.add('word')
-        const keyDefi = document.querySelector(`[data-key="${shuffleOrder[i*2-1]}"]`);
         keyDefi.setAttribute("data-pair", `${i}`)
+
         const word = document.createElement('p');
         const definition = document.createElement('p');
         
@@ -181,15 +181,14 @@ function getWordFromApi() {
     })
 }
 
-function setSetings() {
+function setSetings() { // to check functions, csl the comment
     getArraysSetUp();   // console.log("cardArr:", cardArr, "numberOrder:",numberOrder);
     shuffle();          // console.log("shuffleOrder:",shuffleOrder)
     getBoardStarted();  // console.log(boardSection)
+    makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    // makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
-
-    printShuffleOrderTesting() // PRENDER SOLO PARA HACER TEST DEL LOOP EN EL FETCH
-    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    // printShuffleOrderTesting() // turn ON to test cards without API fetch
+    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 } 
 
 window.addEventListener('load', setSetings)

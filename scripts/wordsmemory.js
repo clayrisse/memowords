@@ -29,7 +29,7 @@ function flipCard() {
         return checkPair()
 }
 
-checkPair = () => {
+function checkPair() {
   console.log("hello from checkpair", pick1.dataset.pair, pick2.dataset.pair)
   
     //CHECK IF .dataset.  PAIR(data-pair) match
@@ -59,13 +59,21 @@ checkPair = () => {
     }, flipedTime);
 }
 
-endMessage = () => {
+function endMessage() {
     const messageBox = document.querySelector('#endmessage')
     messageBox .setAttribute("class", `endmessage`)
 
     const message = document.createElement('div');
-    message.innerHTML= `<h2>Congrats dude! You get less dumb every day ; )</h2>`;
+    message.innerHTML= `<h2>Congrats dude! You get less dumb on every play ; ) </h2>
+    <button id="btn-gosetting">Settings</button>  <button id="btn-playagain">Play Again!</button>`;
     
-    messageBox.appendChild(message) 
+    messageBox.appendChild(message)
+
+    const btnPlay = document.querySelector('#btn-playagain')
+    const btnSet = document.querySelector('#btn-gosetting')
+    console.log(btnPlay)
+    // // setTimeout( ()=> location.reload(), 500);
+    btnPlay.addEventListener('click', () => location.reload())
+    btnSet.addEventListener('click', () => location.assign(`index.html`), 200)
 }
  
