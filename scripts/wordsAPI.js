@@ -187,8 +187,8 @@ function setSetings() { // to check functions, csl the comment
     getBoardStarted();  // console.log(boardSection)
     makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    // printShuffleOrderTesting() // turn ON to test cards without API fetch
-    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    printShuffleOrderTesting() // turn ON to test cards without API fetch
+    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 } 
 
 window.addEventListener('load', setSetings)

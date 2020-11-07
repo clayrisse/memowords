@@ -16,7 +16,7 @@ function flipCard() {
         //IF NOT, CHANGE FLIPSTATUS AND ASIGN PICK1 AND GET OUT OF FUNCTION
         if (flipCardStatus === false){
             pick1 = this;
-            console.log("pieck1", pick1)
+            // console.log("pieck1", pick1)
             flipCardStatus = true;
             return // return to get out a wait fro click n2
         } else if (pick1===this) return
@@ -24,7 +24,7 @@ function flipCard() {
         //ELSE TURN BACK FLIPSTATUS AND ASIGN PICK2 AND RUN FUNCTION TO CHECK IF IT MATCHES
         pick2 = this;
         flipCardStatus = false;
-        console.log("pieck2", pick2)
+        // console.log("pieck2", pick2)
 
         return checkPair()
 }
@@ -38,8 +38,13 @@ function checkPair() {
         pick1.removeEventListener('click', flipCard)
         pick2.removeEventListener('click', flipCard)
         pairCounter += 1
-        if (pairCounter == boardSize/2 ) return endMessage()
-        console.log("pairCounter:", pairCounter)
+        // if (pairCounter == boardSize/2 ) return endMessage()
+        if (pairCounter == boardSize/2 ) {
+            setTimeout(() => {
+                synonymLevel()
+            }, 5000); 
+        }
+        // console.log("pairCounter:", pairCounter)
         return
     }
 
@@ -57,6 +62,22 @@ function checkPair() {
       
         console.log("-------",isPairPlayingOut, flipCardStatus, pick1, pick2)
     }, flipedTime);
+}
+
+function synonymLevel () {
+    console.log("next level")
+    // const pickedLess = [].slice.call(document.querySelectorAll('.picked '))
+    const pickedLess = document.querySelectorAll('.picked ')
+
+    console.log(pickedLess)
+    pickedLess.forEach(elem=>{
+        console.log("object", elem.innerHTML)
+        let classes = elem.classList;
+        classes.remove("picked");
+        elem.addEventListener('click', flipCard)
+    })
+
+ 
 }
 
 function endMessage() {
