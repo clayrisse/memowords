@@ -30,7 +30,7 @@ function flipCard() {
 }
 
 function checkPair() {
-  console.log("hello from checkpair", pick1.dataset.pair, pick2.dataset.pair)
+//   console.log("hello from checkpair", pick1.dataset.pair, pick2.dataset.pair)
   
     //CHECK IF .dataset.  PAIR(data-pair) match
     if (pick1.dataset.pair===pick2.dataset.pair ){ //IF PAIRED P1=P2? DISABLE PICKED : TURNOROUND CARDS
@@ -44,6 +44,11 @@ function checkPair() {
                 synonymLevel()
             }, 5000); 
         }
+        if (pairCounter == boardSize ) {
+            setTimeout(() => {
+                endMessage()
+            }, 3000); 
+        }
         // console.log("pairCounter:", pairCounter)
         return
     }
@@ -51,9 +56,9 @@ function checkPair() {
     //ELSE TURN CARDS BACK AGAIN unflip  AND REMOVE "PICKED"CLASS WITH SOME TIMEOUT
     //turn around card after some time to be able to see it
     isPairPlayingOut = true
-    let flipedTime = 4500
+    let flipedTime = 3000
     if (pick2.classList[1] === "word"){
-        flipedTime = 3000    //shorter time if they are just the "word"
+        flipedTime = 2000    //shorter time if they are just the "word"
     }
     setTimeout(() => {
         pick1.classList.remove('picked');
@@ -65,19 +70,47 @@ function checkPair() {
 }
 
 function synonymLevel () {
-    console.log("next level")
-    // const pickedLess = [].slice.call(document.querySelectorAll('.picked '))
     const pickedLess = document.querySelectorAll('.picked ')
 
     console.log(pickedLess)
     pickedLess.forEach(elem=>{
-        console.log("object", elem.innerHTML)
         let classes = elem.classList;
         classes.remove("picked");
         elem.addEventListener('click', flipCard)
     })
+    console.log("object", memoWords)
+    changeToSynonym()
+}
 
- 
+changeToSynonym = () => {
+    const defCards = document.querySelectorAll('[data-def]')
+    // console.log("hello change", defCards)
+    defCards.forEach(showText=> {
+        // console.log(showText.innerHTML)
+    
+        memoWords.forEach((memoElem, memoIndex)=>{
+          memoElem.results.forEach((everyResults, resultdIndex) => { 
+               if (everyResults.definition === showText.innerHTML) {
+                if (everyResults.synonyms) {
+                    let randomeSynonym = getRandomIndex(everyResults.synonyms)
+                    showText.textContent = everyResults.synonyms[randomeSynonym]
+                    showText.classList.add("synonym")
+                    // console.log(everyResults.synonyms, resultdIndex)
+                } else if (everyResults.typeOf) {
+                    let randomeTypeOf = getRandomIndex(everyResults.typeOf)
+                    showText.textContent = everyResults.typeOf[randomeTypeOf]
+                    showText.classList.add("synonym")
+                    // console.log(everyResults.typeOf, resultdIndex)
+                } else {
+                    let randomeDerivation = getRandomIndex(everyResults.derivation)
+                    showText.textContent = everyResults.derivation[randomeDerivation]
+                    showText.classList.add("synonym")
+                    // console.log("derivaaaaaaaaaticon",everyResults.derivation, resultdIndex)
+                }
+               }
+           })
+        })
+  })    
 }
 
 function endMessage() {

@@ -139,7 +139,7 @@ function getWordFromApi() {
         memoWords.push(wordObj)
         return memoWords
         })
-                
+            // console.log("object", memoWords)    
         //-------selection creation and appendind of elements or words and definition
         for (let i = 1; i <= boardSize/2; i++){
             let randomePick = getRandomIndex(wordInfo[i-1].results)
@@ -187,8 +187,8 @@ function setSetings() { // to check functions, csl the comment
     getBoardStarted();  // console.log(boardSection)
     makeArrOfWordsToFetch(levelChoise)  // console.log("wordsArr", wordsArr)
 
-    printShuffleOrderTesting() // turn ON to test cards without API fetch
-    // getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
+    // printShuffleOrderTesting() // turn ON to test cards without API fetch
+    getWordFromApi();   // O N / o f f  of .fetch call and asignment of "cards" place
 } 
 
 window.addEventListener('load', setSetings)
