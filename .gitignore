@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 configApi.js
+=======
+apiConfig.js
+
+>>>>>>> gh-pages
 # Logs
 logs
 *.log
@@ -64,4 +69,8 @@ typings/
 .next
 
 
+<<<<<<< HEAD
 .vscode/
+=======
+.vscode/
+>>>>>>> gh-pages
