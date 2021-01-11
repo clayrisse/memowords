@@ -1,4 +1,6 @@
-// require('dotenv').config();
+// debugger;
+
+require('dotenv').config();
 
 let memoWords = [];
 let fillOrder = [];
@@ -119,10 +121,10 @@ function getWordFromApi() {
     let requests = wordsArr.map(word => fetch(`https://wordsapiv1.p.rapidapi.com/words/${word}`, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-host": apiConfig.RAPIDAPI_HOST,
-            "x-rapidapi-key": apiConfig.RAPIDAPI_KEY
-            // "x-rapidapi-host": process.env.RAPID_API_HOST,
-            // "x-rapidapi-key": process.env.RAPID_API_KEY
+            // "x-rapidapi-host": apiConfig.RAPIDAPI_HOST,
+            // "x-rapidapi-key": apiConfig.RAPIDAPI_KEY
+            "x-rapidapi-host": process.env.RAPID_API_HOST,
+            "x-rapidapi-key": process.env.RAPID_API_KEY
             // "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
             // "x-rapidapi-key": "e5347b3dabmsh48cbe08706d1f47p19e89ajsne6f06070bcd7"
         }
