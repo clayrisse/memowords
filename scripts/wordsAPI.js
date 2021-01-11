@@ -121,7 +121,7 @@ function getWordFromApi() {
         // "x-rapidapi-host": process.env.RAPID_API_HOST,
         // "x-rapidapi-key": process.env.RAPID_API_KEY
         "x-rapidapi-host": 'wordsapiv1.p.rapidapi.com',
-        "x-rapidapi-key": RAPIDAPI_KEY
+        "x-rapidapi-key": SECRET_RAPIDAPI_KEY
         // "x-rapidapi-host": apiConfig.RAPIDAPI_HOST,
         // "x-rapidapi-key": apiConfig.RAPIDAPI_KEY
         // "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
