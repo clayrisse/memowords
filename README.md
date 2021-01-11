@@ -97,6 +97,10 @@ https://rapidapi.com/dpventures/api/wordsapi/
 ## **Links**
 
 
+#### Deploy 
+https://clayrisse.github.io/memowords/
+
+
 #### Trello 
 https://trello.com/b/1Hr64RBj/memowords
 

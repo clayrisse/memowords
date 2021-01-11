@@ -7,8 +7,8 @@ function getRandomWordFromApi() {
     fetch(`https://wordsapiv1.p.rapidapi.com/words/?random=true`, {
         "method": "GET",
         "headers": {
-        "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-        "x-rapidapi-key": "e5347b3dabmsh48cbe08706d1f47p19e89ajsne6f06070bcd7"
+        "x-rapidapi-host": process.env.wordsapiv1.p.rapidapi.com,
+        "x-rapidapi-key": process.env.x-rapidapi-key
         }
     })
     .then(response => {
